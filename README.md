@@ -4,7 +4,7 @@
 
 - [x] Create Asp.Net 8 WebApi skeleton using Clean Architecture.
 - [x] Install required dependencies
-- [ ] Create category and product models - Domain
+- [x] Create category and product models - Domain
 - [ ] Create DbContext - Persistence
 - [ ] Create qeneric repository - Persistence
 - [ ] Create category and product repositories - Application & Domain
