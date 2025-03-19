@@ -3,7 +3,7 @@
 ## Task List
 
 - [x] Create Asp.Net 8 WebApi skeleton using Clean Architecture.
-- [ ] Install required dependencies
+- [x] Install required dependencies
 - [ ] Create category and product models - Domain
 - [ ] Create DbContext - Persistence
 - [ ] Create qeneric repository - Persistence
