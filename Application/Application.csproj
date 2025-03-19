@@ -11,4 +11,19 @@
     <PackageReference Include="MediatR" Version="12.4.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Exceptions/" />
+    <Folder Include="Features/Category/" />
+    <Folder Include="Features/Category/Commands/" />
+    <Folder Include="Features/Category/Queries/" />
+    <Folder Include="Features/Product/" />
+    <Folder Include="Features/Product/Commands/" />
+    <Folder Include="Features/Product/Queries/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Domain/Domain.csproj" />
+    <ProjectReference Include="../Infrastructure/Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
