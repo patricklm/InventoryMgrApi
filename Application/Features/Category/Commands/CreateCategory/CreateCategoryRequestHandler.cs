@@ -1,0 +1,24 @@
+using Application.Configurations.Mapping;
+using Application.Contracts.Persistence;
+using MediatR;
+
+namespace Application.Features.Category.Commands.CreateCategory;
+
+public class CreateCategoryRequestHandler(
+    IUnitOfWork uow
+) : IRequestHandler<CreateCategoryRequest, int>
+{
+    public async Task<int> Handle(CreateCategoryRequest request, CancellationToken cancellationToken)
+    {
+        // Validate input data
+
+        var category = request.ToCategory();
+        uow.Categories.Add(category);
+        var isCreated = await uow.CompleteAsync();
+        if (isCreated == false)
+        {
+            throw new Exception("Category could not be created");
+        }
+        return category.Id;
+    }
+}
