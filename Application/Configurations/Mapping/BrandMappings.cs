@@ -1,6 +1,6 @@
 using Application.Features.Brand.Commands.CreateBrand;
 using Application.Features.Brand.Commands.UpdateBrand;
-using Application.Features.Brand.Queries.GetAllBrands;
+using Application.Features.Brand.Queries;
 using Domain;
 
 namespace Application.Configurations.Mapping;
@@ -11,7 +11,9 @@ public static class BrandMappings
     {
         return new Brand
         {
-            Name = request.Name
+            Name = request.Name,
+            CreatedDate = DateTime.Now,
+            ModifiedDate = DateTime.Now
         };
     }
 
@@ -24,7 +26,7 @@ public static class BrandMappings
         };
     }
 
-    public static Brand ApplyUpdates(this Brand brand, UpdateBrandRequest request)
+    public static Brand ApplyChanges(this Brand brand, UpdateBrandRequest request)
     {
         brand.Name = request.Name;
         brand.ModifiedDate = DateTime.Now;

@@ -10,13 +10,13 @@
 - [x] Create category and product repositories - Application & Domain
 - [x] Create UnitOfWork
 - [x] Create DependecyInjection configurations
-- [ ] Implement exception handling
 - [x] Create CRUD for Brand - Application
 - [x] Create CRUD for Brand - Api Controller
-- [ ] Create CRUD for category - Application
-- [ ] Create CRUD for category - Api Controller
+- [x] Create CRUD for category - Application
+- [x] Create CRUD for category - Api Controller
 - [ ] Create CRUD for product - Application
 - [ ] Create CRUD for product - Api Controller
+- [ ] Implement exception handling
 
 ## DotNet / Git CLI Commands
 

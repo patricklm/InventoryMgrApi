@@ -13,7 +13,7 @@ public class UpdateBrandRequestHandler(
         var brand = await uow.Brands.GetByIdAsync(request.Id)
             ?? throw new Exception($"Band with id {request.Id} not found");
 
-        brand.ApplyUpdates(request);
+        brand.ApplyChanges(request);
         await uow.CompleteAsync();
     }
 }

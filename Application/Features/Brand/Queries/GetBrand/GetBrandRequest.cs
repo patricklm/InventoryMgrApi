@@ -1,5 +1,3 @@
-using System;
-using Application.Features.Brand.Queries.GetAllBrands;
 using MediatR;
 
 namespace Application.Features.Brand.Queries.GetBrand;

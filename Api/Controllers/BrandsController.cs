@@ -3,6 +3,7 @@ using Application.Features.Brand.Commands.DeleteBrand;
 using Application.Features.Brand.Commands.UpdateBrand;
 using Application.Features.Brand.Queries.GetAllBrands;
 using Application.Features.Brand.Queries.GetBrand;
+using Application.Features.Brand.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,12 +15,11 @@ public class BrandsController(IMediator mediator) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<BrandDto>>> GetBrands()
     {
-
         return Ok(await mediator.Send(new GetAllBrandsRequest()));
     }
 
     [HttpGet("{brandId:int}")]
-    public async Task<ActionResult<BrandDto>> GetBrand(int brandId)
+    public async Task<ActionResult<BrandDto>> GetBrand([FromRoute] int brandId)
     {
         return Ok(await mediator.Send(new GetBrandRequest(brandId)));
     }
@@ -31,17 +31,17 @@ public class BrandsController(IMediator mediator) : ControllerBase
         return CreatedAtAction(nameof(GetBrand), new { brandId }, null);
     }
 
-    [HttpPut("{id}")]
-    public async Task<ActionResult> UpdateBrand([FromRoute] int id, [FromBody] UpdateBrandRequest request)
+    [HttpPut("{brandId}")]
+    public async Task<ActionResult> UpdateBrand([FromRoute] int brandId, [FromBody] UpdateBrandRequest request)
     {
         await mediator.Send(request);
         return NoContent();
     }
 
-    [HttpDelete("{id:int}")]
-    public async Task<ActionResult> DeleteBrand([FromRoute] int id)
+    [HttpDelete("{brandId:int}")]
+    public async Task<ActionResult> DeleteBrand([FromRoute] int brandId)
     {
-        await mediator.Send(new DeleteBrandRequest(id));
+        await mediator.Send(new DeleteBrandRequest(brandId));
         return NoContent();
     }
 }
