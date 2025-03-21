@@ -92,10 +92,12 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Descripton")
+                    b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ImageUrl")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsDiscontinued")

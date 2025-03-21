@@ -14,14 +14,19 @@ public static class CategoryMappings
             Name = request.Name,
             CreatedDate = DateTime.Now,
             ModifiedDate = DateTime.Now
+
+            // CreatedBy = 0,
+            // ModifiedBy = 0
         };
     }
 
-    public static Category ApplyChanges(this Category category ,UpdateCategoryRequest request)
+    public static Category ApplyChanges(this Category category, UpdateCategoryRequest request)
     {
         category.Name = request.Name;
         category.ModifiedDate = DateTime.Now;
         return category;
+
+        // ModifiedBy = 0;
     }
 
     public static CategopryDto ToCategoryDto(this Category category)

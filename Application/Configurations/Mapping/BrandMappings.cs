@@ -14,6 +14,9 @@ public static class BrandMappings
             Name = request.Name,
             CreatedDate = DateTime.Now,
             ModifiedDate = DateTime.Now
+
+            // CreatedBy = 0,
+            // ModifiedBy = 0
         };
     }
 
@@ -31,5 +34,7 @@ public static class BrandMappings
         brand.Name = request.Name;
         brand.ModifiedDate = DateTime.Now;
         return brand;
+
+        // ModifiedBy = 0;
     }
 }
