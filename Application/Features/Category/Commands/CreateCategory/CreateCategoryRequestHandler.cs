@@ -14,11 +14,8 @@ public class CreateCategoryRequestHandler(
 
         var category = request.ToCategory();
         uow.Categories.Add(category);
-        var isCreated = await uow.CompleteAsync();
-        if (isCreated == false)
-        {
-            throw new Exception("Category could not be created");
-        }
+        await uow.CompleteAsync();
+      
         return category.Id;
     }
 }

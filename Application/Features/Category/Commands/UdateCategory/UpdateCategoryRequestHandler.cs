@@ -1,5 +1,6 @@
 using Application.Configurations.Mapping;
 using Application.Contracts.Persistence;
+using Application.Exceptions;
 using MediatR;
 
 namespace Application.Features.Category.Commands.UdateCategory;
@@ -13,7 +14,7 @@ public class UpdateCategoryRequestHandler(
         // Validate request payload
 
         var category = await uow.Categories.GetByIdAsync(request.Id)
-            ?? throw new Exception($"Category with id {request.Id} not found");
+            ?? throw new NotFoundException(nameof(Category), request.Id.ToString());
 
         var updatedCategory = category.ApplyChanges(request);
         await uow.CompleteAsync();

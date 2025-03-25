@@ -1,4 +1,5 @@
 using Application.Contracts.Persistence;
+using Application.Exceptions;
 using MediatR;
 
 namespace Application.Features.Category.Commands.DeleteCategory;
@@ -10,7 +11,7 @@ public class DeleteCategoryRequestHandler(
     public async Task Handle(DeleteCategoryRequest request, CancellationToken cancellationToken)
     {
         var category = await uow.Categories.GetByIdAsync(request.Id)
-            ?? throw new Exception($"Category with id {request.Id} not found");
+            ?? throw new NotFoundException(nameof(Category), request.Id.ToString());
 
         uow.Categories.Remove(category);
         await uow.CompleteAsync();

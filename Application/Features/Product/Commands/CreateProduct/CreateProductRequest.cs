@@ -1,4 +1,3 @@
-using Application.Features.Product.Queries;
 using MediatR;
 
 namespace Application.Features.Product.Commands.CreateProduct;

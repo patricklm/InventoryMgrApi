@@ -6,6 +6,7 @@ using Application.Features.Brand.Queries.GetBrand;
 using Application.Features.Brand.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Application.Exceptions;
 
 namespace Api.Controllers;
 [Route("api/[controller]")]
@@ -34,6 +35,9 @@ public class BrandsController(IMediator mediator) : ControllerBase
     [HttpPut("{brandId}")]
     public async Task<ActionResult> UpdateBrand([FromRoute] int brandId, [FromBody] UpdateBrandRequest request)
     {
+        if(request.Id != brandId) {
+            throw new BadRequestException("Brand id do not match Brand payload");
+        }
         await mediator.Send(request);
         return NoContent();
     }

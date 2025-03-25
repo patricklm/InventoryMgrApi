@@ -1,4 +1,5 @@
 using Application.Contracts.Persistence;
+using Application.Exceptions;
 using MediatR;
 
 namespace Application.Features.Brand.Commands.DeleteBrand;
@@ -10,13 +11,9 @@ public class DeleteBrandRequestHandler(
     public async Task Handle(DeleteBrandRequest request, CancellationToken cancellationToken)
     {
         var brand = await uow.Brands.GetByIdAsync(request.Id)
-          ?? throw new Exception($"Brand with id {request.Id.ToString()} not found");
+          ?? throw new NotFoundException(nameof(Brand), request.Id.ToString());
 
         uow.Brands.Remove(brand);
         var isDeleted = await uow.CompleteAsync();
-
-        if (isDeleted == false)
-            throw new Exception("Could not delete a brand");
-
     }
 }
